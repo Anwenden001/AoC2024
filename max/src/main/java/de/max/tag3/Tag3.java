@@ -18,8 +18,8 @@ public class Tag3 {
 
             while (scanner.hasNext()) {
                 String line = scanner.next();
-            sum += checkMut(line,"mul\\( *[0-9]+, *[0-9]+\\)", true);
-            sum2 += checkMut(line,"don't\\(\\)|do\\(\\)|mul\\( *[0-9]+, *[0-9]+\\)", false);
+            sum += checkMut(line, true);
+            sum2 += checkMut(line, false);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -29,8 +29,8 @@ public class Tag3 {
     }
 
     public static String last = "o()";
-    public static int checkMut(String string,String filter, boolean skip){
-        Pattern pattern = Pattern.compile(filter);
+    public static int checkMut(String string, boolean skip){
+        Pattern pattern = Pattern.compile("don't\\(\\)|do\\(\\)|mul\\( *[0-9]+, *[0-9]+\\)");
         List<String> list = getArray(pattern, string);
         System.out.println(list.toString());
         int sum = 0;
