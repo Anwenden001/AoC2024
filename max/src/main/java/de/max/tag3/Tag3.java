@@ -28,7 +28,7 @@ public class Tag3 {
         System.out.println(sum2);
     }
 
-    public static String last = "o()";
+    public static String last = "do()";
     public static int checkMut(String string, boolean skip){
         Pattern pattern = Pattern.compile("don't\\(\\)|do\\(\\)|mul\\( *[0-9]+, *[0-9]+\\)");
         List<String> list = getArray(pattern, string);
@@ -37,15 +37,15 @@ public class Tag3 {
 
         for(String s : list){
             System.out.println(s);
-            if(Objects.equals(s, "o()") || Objects.equals(s, "on't()")){
+            if(Objects.equals(s, "do()") || Objects.equals(s, "don't()")){
                 last = s;
                 continue;
             }
-            if (last.equals("o()") | skip){
+            if (last.equals("do()") | skip){
             String[] split = s.split(",");
                 if(split.length == 2){
                     System.out.println("test");
-                  sum += mul(Integer.parseInt(split[0].replace("ul(", "")), Integer.parseInt(split[1].replace(")","")));
+                  sum += mul(Integer.parseInt(split[0].replace("mul(", "")), Integer.parseInt(split[1].replace(")","")));
              }
             }
         }
@@ -58,8 +58,7 @@ public class Tag3 {
         Matcher m = tagMatcher.matcher(str);
         List<String> l = new ArrayList<String>();
         while(m.find()) {
-            String s = m.group(); //will give you "#computer"
-            s = s.substring(1); // will give you just "computer"
+            String s = m.group();
             l.add(s);
         }
         return l;
